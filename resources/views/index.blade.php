@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <base href="/" />
     <style>
       body {
         height: 100%;
@@ -94,7 +95,7 @@
       // Defines a GraphQL fetcher using the fetch API.
       function graphQLFetcher(graphQLParams) {
         //return fetch("http://localhost:8000/graphql", {
-        return fetch("{{url(config('graphiql.routes.graphql'))}}", {
+        return fetch("{{url(config('graphiql.routes.graphql'))}}/{{Request::route('schema')}}", {
           method: 'post',
           headers: {
             @forelse(config('graphiql.headers') as $key => $value)
